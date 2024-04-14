@@ -51,6 +51,10 @@ func main() {
 		blocksLeft int
 		seconds    float64
 	)
+	if len(os.Args) < 4 {
+		help()
+	}
+
 	// Check flags
 	for idx, f := range os.Args {
 		switch f {
@@ -106,7 +110,7 @@ func main() {
 	if displayFmt == DETAIL {
 		currentTime := time.Now()
 		fmt.Printf("Blocks remaining until block %d: %d, Block time: %v\n", targetBlock, blocksLeft, blockTime)
-		fmt.Printf("Estimated time left  : %d days %02d:%02d:%02ds\n", n, hours, mins, secs)
+		fmt.Printf("Estimated time left  : %dd %02dh %02dm %02ds\n", n, hours, mins, secs)
 		fmt.Printf("UTC Time now         : %v\n", currentTime.UTC())
 		fmt.Printf("Estimated target time: %v\n", currentTime.Add(time.Duration(seconds)*time.Second).UTC())
 		fmt.Printf("Local Time now       : %v\n", currentTime.Local())
