@@ -126,7 +126,7 @@ func main() {
 		currentTime := time.Now()
 		fmt.Printf("Estimated target time: %v\n", currentTime.Add(time.Duration(seconds)*time.Second).UTC())
 	} else {
-		fmt.Printf("Time remaining: %dd %02dh %02dm %02ds (%vs) \n", n, hours, mins, secs, seconds)
+		fmt.Printf("%dd %02dh %02dm %02ds (%d blocks) \n", n, hours, mins, secs, blocksLeft)
 	}
 
 }
