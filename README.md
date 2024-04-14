@@ -19,9 +19,12 @@ go build .
 ```
 time2block [start block] [target block] [block time]
 ```
+
 Flags:
-	-d, --detail    Show estimated date/time and details
-	-r, --raw		Show time left in seconds in raw format
-	-l, --local     Show estimated local date/time until target block reached
-	-t, --time		Show estimated UTC date/time until target block reached
 ```
+-d, --detail    Show estimated date/time and details
+-r, --raw       Show time left in seconds in raw format
+-l, --local     Show estimated local date/time until target block reached
+-t, --time      Show estimated UTC date/time until target block reached
+```
+
