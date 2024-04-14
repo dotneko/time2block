@@ -1,6 +1,6 @@
-# time2go
+# time2block
 
-time2go is a commandline tool to calculate the time between two blocks given a block time
+time2block is a commandline tool to calculate the time between two blocks given a block time
 
 ## Prerequisites
 
