@@ -52,9 +52,6 @@ func main() {
 		blocksLeft int
 		seconds    float64
 	)
-	if len(os.Args) < 4 {
-		help()
-	}
 
 	// Check flags
 	for idx, f := range os.Args {
@@ -81,8 +78,10 @@ func main() {
 		}
 	}
 
-	if len(os.Args) < 3 {
+	if len(args) < 3 {
+		fmt.Println("Error: insufficient arguments")
 		help()
+		os.Exit(1)
 	}
 
 	startBlock, err := strconv.Atoi(args[0])
@@ -117,7 +116,7 @@ func main() {
 		fmt.Printf("Blocks remaining     : %d, Block time: %v\n", blocksLeft, blockTime)
 		fmt.Printf("Estimated time left  : %dd %02dh %02dm %02ds\n", n, hours, mins, secs)
 		fmt.Printf("UTC Time now         : %v\n", currentTime.UTC())
-		fmt.Printf("Estimated target time : %v\n", currentTime.Add(time.Duration(seconds)*time.Second).UTC())
+		fmt.Printf("Estimated target time: %v\n", currentTime.Add(time.Duration(seconds)*time.Second).UTC())
 	} else if displayFmt == LOCAL {
 		currentTime := time.Now()
 		fmt.Printf("Estimated local time: %v\n", currentTime.Add(time.Duration(seconds)*time.Second).Local())
@@ -125,7 +124,7 @@ func main() {
 		fmt.Printf("%v", seconds)
 	} else if displayFmt == TIME {
 		currentTime := time.Now()
-		fmt.Printf("Estimated target time : %v\n", currentTime.Add(time.Duration(seconds)*time.Second).UTC())
+		fmt.Printf("Estimated target time: %v\n", currentTime.Add(time.Duration(seconds)*time.Second).UTC())
 	} else {
 		fmt.Printf("Time remaining: %dd %02dh %02dm %02ds (%vs) \n", n, hours, mins, secs, seconds)
 	}
