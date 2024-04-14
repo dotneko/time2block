@@ -81,6 +81,10 @@ func main() {
 		}
 	}
 
+	if len(os.Args) < 3 {
+		help()
+	}
+
 	startBlock, err := strconv.Atoi(args[0])
 	if err != nil {
 		log.Fatal(err)
@@ -113,11 +117,7 @@ func main() {
 		fmt.Printf("Blocks remaining     : %d, Block time: %v\n", blocksLeft, blockTime)
 		fmt.Printf("Estimated time left  : %dd %02dh %02dm %02ds\n", n, hours, mins, secs)
 		fmt.Printf("UTC Time now         : %v\n", currentTime.UTC())
-		fmt.Printf("Estimated local time : %v\n", currentTime.Add(time.Duration(seconds)*time.Second).UTC())
-		if currentTime.UTC() != currentTime.Local() {
-			fmt.Printf("Local Time now       : %v\n", currentTime.Local())
-			fmt.Printf("Estimated target time: %v\n", currentTime.Add(time.Duration(seconds)*time.Second).Local())
-		}
+		fmt.Printf("Estimated target time : %v\n", currentTime.Add(time.Duration(seconds)*time.Second).UTC())
 	} else if displayFmt == LOCAL {
 		currentTime := time.Now()
 		fmt.Printf("Estimated local time: %v\n", currentTime.Add(time.Duration(seconds)*time.Second).Local())
